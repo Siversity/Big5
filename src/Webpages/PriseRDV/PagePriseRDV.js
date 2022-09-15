@@ -9,6 +9,7 @@ import 'moment/locale/fr';
 import FullCalendar from '@fullcalendar/react';
 import interactionPlugin from '@fullcalendar/interaction'
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { getListeRDV } from '../../API/getListeRDV';
 
 moment.locale("fr");
 
@@ -19,6 +20,7 @@ class PagePriseRDV extends React.Component {
         this.state = {
             date: "1970-01-01",
             time: 0,
+            notification: false,
         }
     }
 
@@ -59,14 +61,21 @@ class PagePriseRDV extends React.Component {
         rdvJSON.minutesDuration = 30;
         rdvJSON.participant = [patientActor, medecinActor];
 
-        console.log(JSON.stringify(rdvJSON));
-
         postPrendreRDV(JSON.stringify(rdvJSON));
+
+        this.afficherNotification();
+    }
+
+
+    afficherNotification() {
+
     }
 
 
     // Affichage de la sélection d'un RDV
-    render() {
+    async render() {
+
+        console.log(await getListeRDV())
 
         return (
             <div className="container mt-4">
@@ -95,11 +104,27 @@ class PagePriseRDV extends React.Component {
                         <input type="time" name="time" min="08:00" max="17:30" required onInput={(e) => (this.setState({ time: moment(e.target.value, "hh:mm".valueOf()) }))}></input>
                         <p>Rendez-vous de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")}</p>
                         <hr />
-                        <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()}>Prendre RDV</button>
+                        <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()} data-bs-toggle="modal" data-bs-target="#validation">Prendre RDV</button>
                     </div>
                 </div>
 
-                {/* Toast */}
+                {/* Modal */}
+                <div class="modal fade" id="validation" tabindex="-1" aria-labelledby="validationModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="validationModal">Validation du RDV</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Rendez-vous validé pour le {this.state.date} de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")} !
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onClick={() => window.location.reload()}>Retourner à l'écran principal</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
