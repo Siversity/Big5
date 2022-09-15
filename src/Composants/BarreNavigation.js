@@ -1,16 +1,19 @@
 import React, {useState, useEffect} from 'react'
-import "./BarreNavigation.css"
+import './BarreNavigation.css'
 
 
 const Navbar = () => (
-    <nav className="navbar">
-        {/* Permet de revenir à la page d'accueil...à finaliser avec le href */}
-        <btn className="btn" href="PagePrincipale.js">
-            <h1>Big Five : bio results </h1>
-        </btn>
-        <ul className="navbar--link">
-            <btn className="btn">Mon profil</btn>
-        </ul>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a className="navbar-brand" href="#">Big 5 : bio results</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li className="nav-item">
+                        <a className="nav-link active" aria-current="page" href="#">Mon profil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 )
 export default Navbar
