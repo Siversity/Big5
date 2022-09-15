@@ -7,7 +7,7 @@ class PageInfoPatient extends React.Component {
     constructor (props){
         super(props);
         this.state = {
-            patient : null,
+            patient : null
         };
     }
 
@@ -16,21 +16,23 @@ class PageInfoPatient extends React.Component {
         this.setState({
             patient : p
         });
-        console.log(p);
     }
 
     
     render() {
         if(this.state.patient !== null){
             return(
-                <ul class="list-group">
-                    <li class="list-group-item">Nom{this.state.patient.id}</li>
-                    <li class="list-group-item">Prenom </li>
-                    <li class="list-group-item">Tel</li>
-                    <li class="list-group-item">Mail</li>
-                    <li class="list-group-item">Adresse</li>
-                </ul>
-                
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Nom     {this.state.patient.name[0].family}</li>
+                        <li class="list-group-item">Prenom  {this.state.patient.name[0].given[0]}</li>
+                        <li class="list-group-item">Genre    {this.state.patient.gender}</li>
+                        <li class="list-group-item">Date de Naissance   {this.state.patient.birthDate}</li>
+                        <li class="list-group-item">Tel     {this.state.patient.telecom[0].value}</li>
+                        <li class="list-group-item">Mail    {this.state.patient.telecom[1].value}</li>
+                        <li class="list-group-item">Adresse {this.state.patient.address[0].line[1] + ", " + this.state.patient.address[0].line[0] + " " + this.state.patient.address[0].city}</li>
+                    </ul>
+                </div>            
             );
         }
         else {
