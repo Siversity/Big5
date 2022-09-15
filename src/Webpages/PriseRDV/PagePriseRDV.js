@@ -9,7 +9,6 @@ import 'moment/locale/fr';
 import FullCalendar from '@fullcalendar/react';
 import interactionPlugin from '@fullcalendar/interaction'
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { getListeRDV } from '../../API/getListeRDV';
 
 moment.locale("fr");
 
@@ -73,9 +72,7 @@ class PagePriseRDV extends React.Component {
 
 
     // Affichage de la sélection d'un RDV
-    async render() {
-
-        console.log(await getListeRDV())
+    render() {
 
         return (
             <div className="container mt-4">
