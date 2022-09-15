@@ -17,7 +17,7 @@ class PagePriseRDV extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            date: 0,
+            date: "1970-01-01",
             time: 0,
         }
     }
@@ -31,7 +31,7 @@ class PagePriseRDV extends React.Component {
         // Patient
         let patientIdentifier = new Object();
         patientIdentifier.value = "6322e3bf76c6f7001a59728d";
-        
+
         let patientJSON = new Object();
         patientJSON.type = "Patient";
         patientJSON.identifier = patientIdentifier;
@@ -42,7 +42,7 @@ class PagePriseRDV extends React.Component {
         // Médecin
         let medecinIndentifier = new Object();
         medecinIndentifier.value = "420";
-        
+
         let medecinJSON = new Object();
         medecinJSON.type = "Practitioner";
         medecinJSON.identifier = medecinIndentifier;
@@ -89,15 +89,18 @@ class PagePriseRDV extends React.Component {
                     {/* Prise de RDV */}
                     <div className="col-md-auto border rounded p-4">
                         <h5>Date sélectionnée :</h5>
-                        <p>{this.state.dateStr}</p>
+                        <p>{this.state.date}</p>
                         <hr />
                         <h5>Horaire sélectionné :</h5>
-                        <input type="time" name="time" min="08:00" max="17:30" required onInput={(e) => (console.log(moment(e.target.value, "hh:mm")), this.setState({ time: moment(e.target.value, "hh:mm".valueOf()) }))}></input>
+                        <input type="time" name="time" min="08:00" max="17:30" required onInput={(e) => (this.setState({ time: moment(e.target.value, "hh:mm".valueOf()) }))}></input>
                         <p>Rendez-vous de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")}</p>
                         <hr />
                         <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()}>Prendre RDV</button>
                     </div>
                 </div>
+
+                {/* Toast */}
+
 
             </div>
         );
