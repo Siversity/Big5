@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import MainPage from './Webpages/Main/MainPage';
+import PagePrincipale from './Webpages/Main/PagePrincipale';
+import BarreNavigation from './Composants/BarreNavigation';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+const navbar = ReactDOM.createRoot(document.getElementById('navigation'));
+navbar.render(
   <React.StrictMode>
-    <MainPage />
+    <BarreNavigation />
+  </React.StrictMode>
+);
+
+const content = ReactDOM.createRoot(document.getElementById('contenu'));
+content.render(
+  <React.StrictMode>
+    <PagePrincipale />
   </React.StrictMode>
 );
 
