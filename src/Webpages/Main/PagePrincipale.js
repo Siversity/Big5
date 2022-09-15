@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import PageListeRDV from '../ListeRDV/PageListeRDV';
 import PageListeResultats from '../ListeResultats/PageListeResultats';
+import PagePriseRDV from '../PriseRDV/PagePriseRDV';
 
 // Import CSS
 import './PagePrincipale.css';
@@ -26,7 +27,7 @@ function PagePrincipale() {
       <div class="col">
       <div class="card h-100 border-0">
             <div class="card-body">
-              <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit">Prendre un RDV</button>
+              <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherPriseRDV()}>Prendre un RDV</button>
             </div>
         </div>
       </div>
@@ -80,6 +81,25 @@ function afficherListeRDV() {
       <React.StrictMode>
           {/* Composant affichés */}
           <PageListeRDV/>
+      </React.StrictMode>
+  );
+}
+
+
+function afficherPriseRDV() {
+
+  // Balise d'affichage
+  let content = null;
+  content = ReactDOM.createRoot(
+      document.getElementById('contenu')
+  );
+
+  // Réactualisation de l'affichage
+  content.render(
+    // Sélection du noeud
+      <React.StrictMode>
+          {/* Composant affichés */}
+          <PagePriseRDV/>
       </React.StrictMode>
   );
 }
