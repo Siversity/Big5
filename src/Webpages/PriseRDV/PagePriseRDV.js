@@ -19,6 +19,7 @@ class PagePriseRDV extends React.Component {
         this.state = {
             date: "1970-01-01",
             time: 0,
+            notification: false,
         }
     }
 
@@ -59,9 +60,14 @@ class PagePriseRDV extends React.Component {
         rdvJSON.minutesDuration = 30;
         rdvJSON.participant = [patientActor, medecinActor];
 
-        console.log(JSON.stringify(rdvJSON));
-
         postPrendreRDV(JSON.stringify(rdvJSON));
+
+        this.afficherNotification();
+    }
+
+
+    afficherNotification() {
+
     }
 
 
@@ -100,6 +106,16 @@ class PagePriseRDV extends React.Component {
                 </div>
 
                 {/* Toast */}
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                            <strong class="me-auto">Bootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                </div>
 
 
             </div>
