@@ -8,7 +8,7 @@ import pagePrincipale from "../Webpages/Main/PagePrincipale";
 const Navbar = () => (
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a className="navbar-brand" href="pagePrincipale()" onClick={() => pagePrincipale()}>Big 5 : bio results</a>
+            <a className="navbar-brand" href="Accueil" onClick={() => pagePrincipale()}>Big 5 : bio results</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li className="nav-item">
