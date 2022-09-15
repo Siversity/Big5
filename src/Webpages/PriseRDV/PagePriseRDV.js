@@ -101,19 +101,25 @@ class PagePriseRDV extends React.Component {
                         <input type="time" name="time" min="08:00" max="17:30" required onInput={(e) => (this.setState({ time: moment(e.target.value, "hh:mm".valueOf()) }))}></input>
                         <p>Rendez-vous de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")}</p>
                         <hr />
-                        <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()}>Prendre RDV</button>
+                        <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()} data-bs-toggle="modal" data-bs-target="#validation">Prendre RDV</button>
                     </div>
                 </div>
 
-                {/* Toast */}
-                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                            <strong class="me-auto">Bootstrap</strong>
-                            <small>11 mins ago</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        Hello, world! This is a toast message.
+                {/* Modal */}
+                <div class="modal fade" id="validation" tabindex="-1" aria-labelledby="validationModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="validationModal">Validation du RDV</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Rendez-vous validé pour le {this.state.date} de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")} !
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onClick={() => window.location.reload()}>Retourner à l'écran principal</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

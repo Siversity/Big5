@@ -7,7 +7,7 @@ class PageInfoPatient extends React.Component {
     constructor (props){
         super(props);
         this.state = {
-            patient : undefined
+            patient : null,
         };
     }
 
@@ -21,7 +21,7 @@ class PageInfoPatient extends React.Component {
 
     
     render() {
-        if(patient !== undefined){
+        if(this.state.patient !== null){
             return(
                 <ul class="list-group">
                     <li class="list-group-item">Nom{this.state.patient.id}</li>
