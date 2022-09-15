@@ -3,8 +3,12 @@ import React from 'react';
 
 function PageListeRDV() {
 
+    let liste = []
+
     return(
-        <div>ICI LA LISTE DES RDV</div>
+        <div class="">ICI LA LISTE DES RDV
+
+        </div>
     );
 }
 
