@@ -7,7 +7,7 @@ class PageInfoPatient extends React.Component {
     constructor (props){
         super(props);
         this.state = {
-            patient : null
+            patient : undefined
         };
     }
 
@@ -16,21 +16,29 @@ class PageInfoPatient extends React.Component {
         this.setState({
             patient : p
         });
+        console.log(p);
     }
 
     
     render() {
-        console.log(this.state.patient);
-        return(
-            <ul class="list-group">
-                <li class="list-group-item">Nom</li>
-                <li class="list-group-item">Prenom </li>
-                <li class="list-group-item">Tel</li>
-                <li class="list-group-item">Mail</li>
-                <li class="list-group-item">Adresse</li>
-            </ul>
-            
-        );
+        if(patient !== undefined){
+            return(
+                <ul class="list-group">
+                    <li class="list-group-item">Nom{this.state.patient.id}</li>
+                    <li class="list-group-item">Prenom </li>
+                    <li class="list-group-item">Tel</li>
+                    <li class="list-group-item">Mail</li>
+                    <li class="list-group-item">Adresse</li>
+                </ul>
+                
+            );
+        }
+        else {
+            return (
+                <div></div>
+            )
+        }
+        
     }
     
 }
