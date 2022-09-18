@@ -8,9 +8,34 @@ import PagePrincipale from "./PagePrincipale";
 function Authentification() {
 
     return(
-        <div className="container-fluid justify-content-center w-100 h-100 text-center m-4 p-4">
-            <button type="button" class="btn btn-primary auth" onClick={() => afficherPagePrincipale()}>Se connecter</button>
+    <div className="container-fluid justify-content-center w-100 h-100 text-center m-4 p-4">
+        <div className="Auth-form-container">
+            <form className="Auth-form">
+                <div className="form-group mt-3">
+                    <label>Identifiant</label>
+                    <input
+                        type="email"
+                        className="form-control mt-1"
+                        defaultValue="sylvie.vartan@gmail.com"
+                        placeholder="Enter email"
+                    />
+                </div>
+                <div className="form-group mt-3">
+                    <label>Mot de passe</label>
+                    <input
+                        type="password"
+                        className="form-control mt-1"
+                        defaultValue="***************"
+                        placeholder="Enter password"
+                    />
+                </div>
+            </form>
         </div>
+            <button type="button" className="btn btn-primary auth" onClick={() => afficherPagePrincipale()}>Se
+                connecter
+            </button>
+
+    </div>
     )
 }
 
