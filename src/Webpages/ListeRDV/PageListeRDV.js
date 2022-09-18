@@ -5,8 +5,10 @@ function PageListeRDV() {
 
 
     return(
-        <div class="">ICI LA LISTE DES RDV
-
+        <div class="container-fluid">
+            <div class="text-center ">
+                <h1>Mes rendez-vous à venir</h1>
+            </div>
         </div>
     );
 }

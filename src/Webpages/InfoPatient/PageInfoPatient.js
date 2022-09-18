@@ -22,17 +22,45 @@ class PageInfoPatient extends React.Component {
     render() {
         if(this.state.patient !== null){
             return(
-                <div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Nom :    {this.state.patient.name[0].family}</li>
-                        <li class="list-group-item">Prenom :  {this.state.patient.name[0].given[0]}</li>
-                        <li class="list-group-item">Genre :    {this.state.patient.gender}</li>
-                        <li class="list-group-item">Date de Naissance :   {this.state.patient.birthDate}</li>
-                        <li class="list-group-item">Tel :     {this.state.patient.telecom[0].value}</li>
-                        <li class="list-group-item">Mail :    {this.state.patient.telecom[1].value}</li>
-                        <li class="list-group-item">Adresse : {this.state.patient.address[0].line[1] + ", " + this.state.patient.address[0].line[0] + " " + this.state.patient.address[0].city}</li>
-                    </ul>
-                </div>            
+                <div class="container-fluid">
+                    <div class="text-center ">
+                        <h1>Mes informations</h1>
+                    </div>
+                    <div class="">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nom :</strong></td>
+                                    <td>{this.state.patient.name[0].family}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prénom :</strong></td>
+                                    <td>{this.state.patient.name[0].given[0]}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Genre :</strong></td>
+                                    <td>{this.state.patient.gender}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Date de naissance :</strong></td>
+                                    <td>{this.state.patient.birthDate}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Numéro de téléphone :</strong></td>
+                                    <td>{this.state.patient.telecom[0].value}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mail :</strong></td>
+                                    <td>{this.state.patient.telecom[1].value}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adresse :</strong></td>
+                                    <td>{this.state.patient.address[0].line[1] + " " + this.state.patient.address[0].line[0] + ", " + this.state.patient.address[0].city}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             );
         }
         else {
