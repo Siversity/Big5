@@ -4,7 +4,12 @@ import React from 'react';
 function PageListeResultats() {
 
     return(
-        <div>ICI LA LISTE DES RESULTATS</div>
+        <div class="container-fluid">
+            <div class="text-center ">
+                <h1>Mes résultats d'analyse</h1>
+            </div>
+        </div>
+        
     );
 }
 

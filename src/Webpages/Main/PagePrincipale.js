@@ -12,32 +12,34 @@ import './PagePrincipale.css';
 // Page principale
 function PagePrincipale() {
   return (
-    <div class="row row-cols-1 row-cols-md-3 g-4 p-4 m-4">
+    <div class container-fluid>
+      <h1 class="text-center">Bienvenue</h1>
+      <div class="row row-cols-1 row-cols-md-3 g-4 p-4 m-4">
+        {/* Liste des résultats */}
+        <div class="col">
+          <div class="card h-100 border-0">
+              <div class="card-body">
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeResutats()}>Consulter mes résultats d'analyse</button>
+              </div>
+          </div>
+        </div>
 
-      {/* Liste des résultats */}
-      <div class="col">
+        {/* Prise de RDV */}
+        <div class="col">
         <div class="card h-100 border-0">
-            <div class="card-body">
-              <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeResutats()}>Afficher la liste des résultats</button>
-            </div>
+              <div class="card-body">
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherPriseRDV()}>Prendre un rendez-vous</button>
+              </div>
+          </div>
         </div>
-      </div>
 
-      {/* Prise de RDV */}
-      <div class="col">
-      <div class="card h-100 border-0">
-            <div class="card-body">
-              <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherPriseRDV()}>Prendre un RDV</button>
-            </div>
-        </div>
-      </div>
-
-      {/*!-- Liste des RDV */}
-      <div class="col">
-      <div class="card h-100 border-0">
-            <div class="card-body">
-              <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>Afficher la liste des RDV</button>
-            </div>
+        {/*!-- Liste des RDV */}
+        <div class="col">
+        <div class="card h-100 border-0">
+              <div class="card-body">
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>Consulter mes prochains rendez-vous</button>
+              </div>
+          </div>
         </div>
       </div>
     </div>
