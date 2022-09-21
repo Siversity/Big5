@@ -9,12 +9,12 @@ import PagePrincipale from "../Webpages/Main/PagePrincipale";
 const Navbar = () => (
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a className="navbar-brand" href="#" onClick={() => afficherPagePrincipale()}>Big 5 : bio results</a>
+            <a className="navbar-brand" href="#" onClick={() => afficherPagePrincipale()}><img className="imagelogo" src="https://cdn-icons-png.flaticon.com/512/2784/2784065.png" alt="React Logo" />Big 5</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li className="nav-item">
                         <a className="nav-link active" aria-current="page" href="#" onClick={() => afficherInfoPatient()}>
-                        <i class="bi bi-person-circle"></i> Mon profil</a>
+                        <i class="col-4 bi bi-person-circle"></i> Mon profil</a>
                     </li>
                 </ul>
             </div>
