@@ -11,6 +11,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import dayGridPlugin from '@fullcalendar/daygrid';
 import {idPatient} from "../../API/Constantes";
 import {afficherPagePrincipale} from "../Main/Authentification";
+import { getListeRDV } from '../../API/getListeRDV';
 
 
 moment.locale("fr");
@@ -20,10 +21,33 @@ class PagePriseRDV extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            rdvs: null,
             date: "1970-01-01",
             time: 0,
             notification: false,
         }
+    }
+
+    async componentDidMount() {
+        let listeRDVs = await getListeRDV();
+
+        this.setState({
+            rdvs: listeRDVs
+        })
+    }
+
+
+    afficherRDVs() {
+        let liste = []
+        if (this.state.rdvs !== null) {
+            this.state.rdvs.forEach(rdv => {
+                liste.push(
+                {title: 'RDV à venir', date: moment(rdv.start).format("YYYY-MM-DD")},
+            )
+            });
+        }
+
+        return liste;
     }
 
 
@@ -75,6 +99,9 @@ class PagePriseRDV extends React.Component {
     // Affichage de la sélection d'un RDV
     render() {
 
+        let listeRDVs = this.afficherRDVs();
+        console.log(listeRDVs)
+
         return (
             <div className="container mt-4">
                 <div className="row justify-content-md-center">
@@ -88,6 +115,7 @@ class PagePriseRDV extends React.Component {
                                 start: moment(Date.now()).format("YYYY-MM-DD"),
                                 end: null,
                             }}
+                            events={listeRDVs}
                             selectable={true}
                             dateClick={(info) => (console.log(info.date), this.setState({ date: info.dateStr }))}
                         />
