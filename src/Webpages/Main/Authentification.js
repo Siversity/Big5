@@ -11,6 +11,7 @@ function Authentification() {
 
     return (
         <div className="container-fluid justify-content-center w-100 h-100 text-center m-4 p-4">
+            <img className="image" src="https://zupimages.net/up/22/38/g0iu.png" alt="First slide"/>
             <div className="Auth-form-container">
                 <form className="Auth-form">
                     <div className="form-group mt-3">
