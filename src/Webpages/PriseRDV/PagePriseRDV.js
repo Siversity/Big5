@@ -104,7 +104,7 @@ class PagePriseRDV extends React.Component {
         return (
             <div className="container mt-4">
                 <div className="row justify-content-md-center">
-                    <h1>Prendre un rendez-vous <button type="button" class="btn btn-primary" onClick={() => afficherListeRDV()}>Voir mes RDV</button> </h1>
+                    <h1>Prendre un rendez-vous <button type="button" class="btn btn-primary" onClick={() => afficherListeRDV()}>Gérer mes RDV</button> </h1>
                     {/* Calendrier */}
                     <div className="col border rounded p-4">
                         <FullCalendar
