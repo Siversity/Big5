@@ -1,5 +1,9 @@
 import React from "react";
 import {getListeRDV} from "./../../API/getListeRDV";
+import moment from 'moment/moment';
+import 'moment/locale/fr';
+moment.locale("fr");
+
 
 class PageListeRDV extends React.Component {
 
@@ -19,18 +23,20 @@ class PageListeRDV extends React.Component {
 
     render(){
         if(this.state.rdvs !== null){
-            const current = new Date(); 
-            const date = `${current.getFullYear()}-${(current.getMonth()+1).toString().padStart(2,"0")}-${current.getDate()}T00:00:00Z`;
-
+            let current = new Date(); 
+            let date = `${current.getFullYear()}-${(current.getMonth()+1).toString().padStart(2,"0")}-${current.getDate()}T00:00:00Z`;
+            let dates = [];
+            console.log("ok");
+            this.state.rdvs.forEach(rdv =>{
+                if(rdv.start >= date){
+                    let format = moment(rdv.start).format("DD/MM/YYYY");
+                    dates.push(<li class="list-group-item"><tr>{format}</tr><tr>Analyse Hématologique</tr></li>);
+                }
+            });
 
             return(
                     <ul class="list-group">
-                        {this.state.rdvs.forEach(rdv =>{
-                            if(rdv.start >= date){
-                                console.log(rdv);
-                                <li class="list-group-item">{rdv.start}</li>
-                            }
-                        })}
+                        {dates}
                     </ul>
             );
         }
