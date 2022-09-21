@@ -69,7 +69,7 @@ function afficherListeResutats() {
 }
 
 
-function afficherListeRDV() {
+export function afficherListeRDV() {
 
   // Balise d'affichage
   let content = null;
