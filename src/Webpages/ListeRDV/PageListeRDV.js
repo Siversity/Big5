@@ -32,8 +32,9 @@ class PageListeRDV extends React.Component {
             console.log("ok");
             this.state.rdvs.forEach(rdv => {
                 if (rdv.start >= date) {
-                    let format = moment(rdv.start).format("DD/MM/YYYY");
-                    dates.push(<li class="list-group-item"><strong>{format} à ??h </strong> : Analyse Hématologique</li>);
+                    let formatDate = moment(rdv.start).format("DD/MM/YYYY");
+                    let formatHeure = moment(rdv.start).format("HH:mm");
+                    dates.push(<li class="list-group-item"><strong>{formatDate} à {formatHeure} </strong> : Analyse Hématologique</li>);
                 }
             });
 
