@@ -34,7 +34,7 @@ class PageListeRDV extends React.Component {
                 if (rdv.start >= date) {
                     let formatDate = moment(rdv.start).format("DD/MM/YYYY");
                     let formatHeure = moment(rdv.start).format("HH:mm");
-                    dates.push(<li class="list-group-item"><strong>{formatDate} à {formatHeure} </strong> : Analyse Hématologique</li>);
+                    dates.push(<li class="list-group-item"><strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique</li>);
                 }
             });
 
@@ -43,7 +43,7 @@ class PageListeRDV extends React.Component {
                     <div className="container-fluid m-4">
                         <div className="row row-cols-1">
                             <div className="col">
-                                <h1>Mes rendez-vous à venir</h1>
+                                <h1>Gérer mes prochains rendez-vous</h1><br/>
                             </div>
                             <div className="col aligns-items-center d-flex justify-content-center">
                                 <div class="card w-50">
@@ -53,7 +53,7 @@ class PageListeRDV extends React.Component {
                                 </div>
                             </div>
                             <div className="col">
-                            <br />
+                            <br/><br/>
                     <button type="button" class="btn btn-primary" onClick={() => afficherPriseRDV()}>Prendre un nouveau rendez-vous</button>
                             </div>
                         </div>
