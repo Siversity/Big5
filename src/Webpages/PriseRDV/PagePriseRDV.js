@@ -9,6 +9,8 @@ import 'moment/locale/fr';
 import FullCalendar from '@fullcalendar/react';
 import interactionPlugin from '@fullcalendar/interaction'
 import dayGridPlugin from '@fullcalendar/daygrid';
+import {idPatient} from "../../API/Constantes";
+
 
 moment.locale("fr");
 
@@ -31,7 +33,7 @@ class PagePriseRDV extends React.Component {
 
         // Patient
         let patientIdentifier = new Object();
-        patientIdentifier.value = "6322e3bf76c6f7001a59728d";
+        patientIdentifier.value = idPatient;
 
         let patientJSON = new Object();
         patientJSON.type = "Patient";
@@ -114,7 +116,7 @@ class PagePriseRDV extends React.Component {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Rendez-vous validé pour le {this.state.date} de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")} !
+                                Rendez-vous validé pour le {moment(this.state.date).format("DD/MM/YYYY")} de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")} !
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" onClick={() => window.location.reload()}>Retourner à l'écran principal</button>
