@@ -18,3 +18,8 @@ label {
     font-weight: 600;
     color: rgb(34, 34, 34);
 }
+
+.image {
+    height: 300px;
+    width: 300px;
+}
