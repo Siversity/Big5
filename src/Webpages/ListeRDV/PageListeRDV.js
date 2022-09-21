@@ -36,13 +36,11 @@ class PageListeRDV extends React.Component {
                 if (rdv.start >= date) {
                     let formatDate = moment(rdv.start).format("DD/MM/YYYY");
                     let formatHeure = moment(rdv.start).format("HH:mm");
-                    dates.push(<div class="row align-items-start">
-                                    <div class="col-7">
-                                        <li class="list-group-item"><strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique </li>
-                                    </div>
-                                    <div class="col-1"><button type="button" class="btn btn-primary" id={rdv.id} onClick={() => supprimerRDV(rdv.id)}>Supprimer</button>
-                                    </div>
-                                </div>);
+                    dates.push(
+                        <li class="list-group-item">
+                            <strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique <button type="button" class="btn btn-primary" id={rdv.id} onClick={() => supprimerRDV(rdv.id)}>Supprimer</button>
+
+                        </li >);
                 }
             });
 
@@ -51,17 +49,17 @@ class PageListeRDV extends React.Component {
                     <div className="container-fluid m-4">
                         <div className="row row-cols-1">
                             <div className="col">
-                                <h1>Gérer mes prochains rendez-vous</h1><br/>
+                                <h1>Gérer mes prochains rendez-vous</h1><br />
                             </div>
                             <div className="col aligns-items-center d-flex justify-content-center">
                                 <div class="card w-50">
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush border-0">
                                         {dates}
                                     </ul>
                                 </div>
                             </div>
                             <div className="col">
-                            <br/><br/>
+                                <br /><br />
                                 <button type="button" class="btn btn-primary" onClick={() => afficherPriseRDV()}>Prendre un nouveau rendez-vous</button>
                             </div>
                         </div>
