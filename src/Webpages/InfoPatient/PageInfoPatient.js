@@ -14,18 +14,63 @@ class PageInfoPatient extends React.Component {
     constructor (props){
         super(props);
         this.state = {
-            patient : null
+            patient : null,
+            inputTel : "",
+            inputEmail : "",
+            inputVoie : "",
+            inputVille : ""
         };
     }
 
     async componentDidMount(){
         let p = await getPatient();
         this.setState({
-            patient : p
+            patient : p,
+            inputTel : p.telecom[0].value,
+            inputEmail : p.telecom[1].value,
+            inputVoie : p.address[0].line[0],
+            inputVille : p.address[0].city
         });
     }
 
+
+    majPatient() {
     
+        let name = new Object();
+        name.use = "official";
+        name.family = this.state.patient.name[0].family; 
+        name.given = [this.state.patient.name[0].given[0]];
+    
+        let phone = new Object();
+        phone.system = "phone";
+        phone.value = this.state.inputTel;
+        phone.use = "mobile";
+    
+        let email = new Object();
+        email.system = "email";
+        email.value = this.state.inputEmail;
+        email.use = "home";
+    
+        let adresse = new Object();
+        adresse.use = "home"
+        adresse.line = [this.state.inputVoie];
+        adresse.city = this.state.inputVille;
+        adresse.country = "France";
+    
+        let patientJSON = new Object();
+        patientJSON.resourceType = "Patient";
+        patientJSON.id = this.state.patient.id;
+        patientJSON.active = new Boolean(true);
+        patientJSON.name = [name];
+        patientJSON.telecom = [phone, email]
+        patientJSON.gender = this.state.patient.gender;
+        patientJSON.birthDate = this.state.patient.birthDate;
+        patientJSON.address = [adresse];    
+        putPatient(JSON.stringify(patientJSON));
+    
+    }
+
+
     render() {
         if(this.state.patient !== null){
             return(
@@ -54,19 +99,19 @@ class PageInfoPatient extends React.Component {
                             </tr>
                             <tr>
                                 <td><strong>Numéro de téléphone :</strong></td>
-                                <td><input type="text" id="tel" class="form-control" placeholder={this.state.patient.telecom[0].value}/></td>
+                                <td><input type="text" id="tel" class="form-control" value={this.state.inputTel} onChange={e => this.setState({inputTel: e.target.value})}/></td>
                             </tr>
                             <tr>
                                 <td><strong>Mail :</strong></td>
-                                <td><input type="text" id="mail" class="form-control" placeholder={this.state.patient.telecom[1].value}/></td>
+                                <td><input type="text" id="mail" class="form-control" value={this.state.inputEmail} onChange={e => this.setState({inputEmail: e.target.value})}/></td>
                             </tr>
                             <tr>
                                 <td><strong>Voie :</strong></td>
-                                <td><input type="text" id="adr" class="form-control" placeholder={this.state.patient.address[0].line[0]}/></td>
+                                <td><input type="text" id="adr" class="form-control" value={this.state.inputVoie} onChange={e => this.setState({inputVoie: e.target.value})}/></td>
                             </tr>
                             <tr>
                                 <td><strong>Ville :</strong></td>
-                                <td><input type="text" id="adr" class="form-control" placeholder={this.state.patient.address[0].city}/></td>
+                                <td><input type="text" id="adr" class="form-control" value={this.state.inputVille} onChange={e => this.setState({inputVille: e.target.value})}/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -77,7 +122,7 @@ class PageInfoPatient extends React.Component {
                                 <button type="button" class="btn btn-danger" onClick={() => afficherPageConnexion()}>Déconnexion <i class="bi bi-box-arrow-right"></i></button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success" onClick={() => majPatient()}>Mettre à jour <i class="bi bi-arrow-counterclockwise"></i></button>
+                                <button type="button" class="btn btn-success" onClick={() => this.majPatient()}>Mettre à jour <i class="bi bi-arrow-counterclockwise"></i></button>
                             </div>
                         </div>
                     </div>
@@ -118,42 +163,4 @@ function afficherPageConnexion(){
 
 
 
-    // Envoi d'un RDV
-function majPatient() {
-        
-    let name = new Object();
-    name.use = "official";
-    name.family = this.state.patient.name[0].family; 
-    name.given = [this.state.patient.name[0].given[0]];
-
-    let phone = new Object();
-    phone.system = "phone";
-    phone.value = "";
-    phone.use = "mobile";
-
-    let email = new Object();
-    email.system = "email";
-    email.value = "";
-    email.use = "home";
-
-    let adresse = new Object();
-    adresse.use = "home"
-    adresse.line = [] ;
-    adresse.city = "";
-    adresse.country = "France";
-
-    // JSON
-    let patientJSON = new Object();
-    patientJSON.resourceType = "Patient";
-    patientJSON.id = this.state.patient.id;
-    patientJSON.active = "true";
-    patientJSON.name = name;
-    patientJSON.telecom = [phone, email]
-    patientJSON.gender = this.state.patient.gender;
-    patientJSON.birthDate = 
-    patientJSON.address = [adresse];
-
-    putPatient(JSON.stringify(patientJSON));
-
-}
 
