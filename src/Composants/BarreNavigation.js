@@ -13,7 +13,8 @@ const Navbar = () => (
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#" onClick={() => afficherInfoPatient()}>Mon profil</a>
+                        <a className="nav-link active" aria-current="page" href="#" onClick={() => afficherInfoPatient()}>
+                        <i class="bi bi-person-circle"></i> Mon profil</a>
                     </li>
                 </ul>
             </div>

@@ -74,10 +74,10 @@ class PageInfoPatient extends React.Component {
                     <div class="text-center">
                         <div class="row align-items-start">
                             <div class="col">
-                                <button type="button" class="btn btn-danger" onClick={() => afficherPageConnexion()}>Déconnexion</button>
+                                <button type="button" class="btn btn-danger" onClick={() => afficherPageConnexion()}>Déconnexion <i class="bi bi-box-arrow-right"></i></button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success" onClick={() => majPatient()}>Mettre à jour</button>
+                                <button type="button" class="btn btn-success" onClick={() => majPatient()}>Mettre à jour <i class="bi bi-arrow-counterclockwise"></i></button>
                             </div>
                         </div>
                     </div>

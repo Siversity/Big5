@@ -19,7 +19,10 @@ function PagePrincipale() {
         <div class="col">
           <div class="card cardPP h-100 border-0">
               <div class="card-body">
-                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeResutats()}>Consulter mes résultats d'analyse</button>
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeResutats()}>
+                <i class="bi bi-ui-checks"></i>
+                <br/>
+                Consulter mes résultats d'analyse</button>
               </div>
           </div>
         </div>
@@ -28,7 +31,12 @@ function PagePrincipale() {
         <div class="col">
         <div class="card cardPP h-100 border-0">
               <div class="card-body">
-                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherPriseRDV()}>Prendre un rendez-vous</button>
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherPriseRDV()}>
+                  
+                  <i class="bi bi-calendar-date"></i>
+                  <br/>
+                  Prendre un rendez-vous</button>
+                
               </div>
           </div>
         </div>
@@ -37,7 +45,10 @@ function PagePrincipale() {
         <div class="col">
         <div class="card cardPP h-100 border-0">
               <div class="card-body">
-                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>Gérer mes prochains rendez-vous</button>
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>
+                <i class="bi bi-calendar3"></i>
+                <br/>
+                Gérer mes prochains rendez-vous</button>
               </div>
           </div>
         </div>
@@ -69,7 +80,7 @@ function afficherListeResutats() {
 }
 
 
-function afficherListeRDV() {
+export function afficherListeRDV() {
 
   // Balise d'affichage
   let content = null;
