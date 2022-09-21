@@ -27,6 +27,7 @@ class PageInfoPatient extends React.Component {
                 <div class="container-fluid">
                     <div class="text-center ">
                         <h1>Mes informations</h1>
+                        <br/>
                     </div>
                     <div class="">
                         <table class="table table-borderless">
