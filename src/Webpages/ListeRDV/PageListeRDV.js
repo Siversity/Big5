@@ -4,6 +4,8 @@ import { getListeRDV } from "./../../API/getListeRDV";
 import moment from 'moment/moment';
 import 'moment/locale/fr';
 import PagePriseRDV from "../PriseRDV/PagePriseRDV";
+import { afficherListeRDV } from "../Main/PagePrincipale";
+import { deleteRDV } from "../../API/deleteRDV";
 moment.locale("fr");
 
 
@@ -34,7 +36,13 @@ class PageListeRDV extends React.Component {
                 if (rdv.start >= date) {
                     let formatDate = moment(rdv.start).format("DD/MM/YYYY");
                     let formatHeure = moment(rdv.start).format("HH:mm");
-                    dates.push(<li class="list-group-item"><strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique</li>);
+                    dates.push(<div class="row align-items-start">
+                                    <div class="col-7">
+                                        <li class="list-group-item"><strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique </li>
+                                    </div>
+                                    <div class="col-1"><button type="button" class="btn btn-primary" id={rdv.id} onClick={() => supprimerRDV(rdv.id)}>Supprimer</button>
+                                    </div>
+                                </div>);
                 }
             });
 
@@ -54,13 +62,10 @@ class PageListeRDV extends React.Component {
                             </div>
                             <div className="col">
                             <br/><br/>
-                    <button type="button" class="btn btn-primary" onClick={() => afficherPriseRDV()}>Prendre un nouveau rendez-vous</button>
+                                <button type="button" class="btn btn-primary" onClick={() => afficherPriseRDV()}>Prendre un nouveau rendez-vous</button>
                             </div>
                         </div>
                     </div>
-
-
-                    
                 </div>
 
             );
@@ -73,6 +78,11 @@ class PageListeRDV extends React.Component {
 }
 
 export default PageListeRDV;
+
+function supprimerRDV(id) {
+    deleteRDV(id);
+    afficherListeRDV();
+}
 
 // Navigation functions
 function afficherPriseRDV() {

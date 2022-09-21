@@ -4,6 +4,7 @@ import {getPatient} from "./../../API/getPatient";
 import Authentification from '../Main/Authentification';
 import moment from 'moment/moment';
 import 'moment/locale/fr';
+import { putPatient } from "../../API/putPatient";
 moment.locale("fr");
 
 class PageInfoPatient extends React.Component {
@@ -51,23 +52,29 @@ class PageInfoPatient extends React.Component {
                             </tr>
                             <tr>
                                 <td><strong>Numéro de téléphone :</strong></td>
-                                <td>{this.state.patient.telecom[0].value}</td>
+                                <td><input type="text" id="tel" class="form-control" placeholder={this.state.patient.telecom[0].value}/></td>
                             </tr>
                             <tr>
                                 <td><strong>Mail :</strong></td>
-                                <td>{this.state.patient.telecom[1].value}</td>
+                                <td><input type="text" id="mail" class="form-control" placeholder={this.state.patient.telecom[1].value}/></td>
                             </tr>
                             <tr>
                                 <td><strong>Adresse :</strong></td>
-                                <td>{this.state.patient.address[0].line[1] + " " + this.state.patient.address[0].line[0] + ", " + this.state.patient.address[0].city}</td>
+                                <td><input type="text" id="adr" class="form-control" placeholder={this.state.patient.address[0].line[1] + " " + this.state.patient.address[0].line[0] + ", " + this.state.patient.address[0].city}/></td>
                             </tr>
                         </tbody>
                     </table>
                     <br/>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary" onClick={() => afficherPageConnexion()}>Déconnexion</button>
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <button type="button" class="btn btn-danger" onClick={() => afficherPageConnexion()}>Déconnexion</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success" onClick={() => majPatient()}>Mettre à jour</button>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             );
         }
@@ -101,3 +108,11 @@ function afficherPageConnexion() {
         </React.StrictMode>
     );
   }
+
+
+
+    // Envoi d'un RDV
+function majPatient() {
+        
+
+    }
