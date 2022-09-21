@@ -5,6 +5,7 @@ import './Authentification.css';
 
 import PagePrincipale from "./PagePrincipale";
 import BarreNavigation from "./../../Composants/BarreNavigation";
+import Footer from "./../../Composants/Footer";
 
 function Authentification() {
 
@@ -69,6 +70,18 @@ export function afficherPagePrincipale() {
     navbar.render(
         <React.StrictMode>
             <BarreNavigation />
+        </React.StrictMode>
+    );
+
+    // Balise d'affichage
+    let footer = null;
+    footer = ReactDOM.createRoot(
+        document.getElementById('footer')
+    );
+
+    footer.render(
+        <React.StrictMode>
+            <Footer />
         </React.StrictMode>
     );
 }

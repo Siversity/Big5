@@ -38,7 +38,7 @@ class PageListeRDV extends React.Component {
                     let formatHeure = moment(rdv.start).format("HH:mm");
                     dates.push(
                         <li class="list-group-item">
-                            <strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique <button type="button" class="btn btn-primary" id={rdv.id} onClick={() => supprimerRDV(rdv.id)}>Supprimer</button>
+                            <strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique <button type="button" class="btn btn-danger btn-sm" id={rdv.id} onClick={() => supprimerRDV(rdv.id)} data-bs-toggle="modal" data-bs-target="#suppression">Supprimer</button>
 
                         </li >);
                 }
@@ -61,6 +61,21 @@ class PageListeRDV extends React.Component {
                             <div className="col">
                                 <br /><br />
                                 <button type="button" class="btn btn-primary" onClick={() => afficherPriseRDV()}>Prendre un nouveau rendez-vous</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Modal */}
+                    <div class="modal fade" id="suppression" tabindex="-1" aria-labelledby="suppressionModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="suppressionModal">Suppression du RDV</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Le rendez-vous a bien été supprimé !
+                                </div>
                             </div>
                         </div>
                     </div>
