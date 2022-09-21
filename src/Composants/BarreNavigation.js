@@ -26,6 +26,8 @@ export default Navbar
 // Navigation functions
 function afficherInfoPatient() {
 
+    console.log("Afficher IP")
+
     // Balise d'affichage
     let content = null;
     content = ReactDOM.createRoot(
