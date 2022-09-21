@@ -1,6 +1,8 @@
 import React from "react";
 import {getPatient} from "./../../API/getPatient";
-
+import moment from 'moment/moment';
+import 'moment/locale/fr';
+moment.locale("fr");
 
 class PageInfoPatient extends React.Component {
     
@@ -43,7 +45,7 @@ class PageInfoPatient extends React.Component {
                                 </tr>
                                 <tr>
                                     <td><strong>Date de naissance :</strong></td>
-                                    <td>{this.state.patient.birthDate}</td>
+                                    <td>{moment(this.state.patient.birthDate).format("DD/MM/YYYY")}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Numéro de téléphone :</strong></td>
