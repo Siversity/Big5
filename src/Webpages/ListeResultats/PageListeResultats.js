@@ -5,6 +5,7 @@ import React from 'react';
 import { getListeRDV } from '../../API/getListeRDV';
 import moment from 'moment/moment';
 import 'moment/locale/fr';
+import { getResultat } from '../../API/getResultat';
 
 moment.locale("fr");
 
@@ -15,7 +16,7 @@ class PageListeResultats extends React.Component {
         super(props);
         this.state = {
             rdvs: null,
-            resultats: null,
+            resultat: "",
         };
     }
 
@@ -27,13 +28,20 @@ class PageListeResultats extends React.Component {
         })
     }
 
+    async afficherResultat(idRDV) {
+        let newResultat = await getResultat(idRDV);
+        this.setState({
+            resultat: newResultat[0]
+        });
+    }
+
     displayRDVs() {
         let liste = [];
 
         this.state.rdvs.forEach(rdv => {
             liste.push(
                 <li className="list-group-item">{moment(rdv.start).format("DD/MM/YYYY") + "  "}
-                    <button type="button" class="btn btn-primary btn-sm">Afficher >>></button>
+                    <button type="button" class="btn btn-primary btn-sm" onClick={() => this.afficherResultat(rdv.id)}>{rdv.id} >>></button>
                 </li>
             )
         });
@@ -43,11 +51,31 @@ class PageListeResultats extends React.Component {
 
 
     render() {
-        
+
         let listeRDVs;
         if (this.state.rdvs !== null) {
             listeRDVs = this.displayRDVs();
         }
+
+        let results = "";
+        if (this.state.resultat !== null  && this.state.resultat !== undefined && this.state.resultat !== "") {
+            console.log(this.state.resultat)
+
+            results = (
+                <>
+                <h6>RDV du {moment(this.state.resultat.effectiveDateTime).format("DD/MM/YYYY")} à {moment(this.state.resultat.effectiveDateTime).format("HH:MM")}</h6>
+                <p><strong>Médecin : </strong> {this.state.resultat.performer[0].display}</p>
+                <p><strong>Observations : </strong>{this.state.resultat.conclusion}</p>
+                </>);
+
+        }
+        if (this.state.resultat == "") {
+            results = "Sélectionnez un RDV passé"
+        }
+        if (this.state.resultat == null || this.state.resultat == undefined) {
+            results = "Les résultats n'ont pas encore été publiés"
+        }
+        
 
         return (
             <div class="container-fluid">
@@ -69,7 +97,7 @@ class PageListeResultats extends React.Component {
                         <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Résultats</h5>
-                                    <p class="card-text">Ici les résultats</p>
+                                    {results}
                                 </div>
                         </div>
                     </div>
