@@ -43,7 +43,7 @@ export default Authentification;
 
 
 // Navigation
-function afficherPagePrincipale() {
+export function afficherPagePrincipale() {
     // Balise d'affichage
     let contenu = null;
     contenu = ReactDOM.createRoot(
