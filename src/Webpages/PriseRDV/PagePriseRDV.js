@@ -68,7 +68,7 @@ class PagePriseRDV extends React.Component {
     }
 
     validerRDV() {
-        window.location.reload();
+        afficherPagePrincipale()
     }
 
 
@@ -118,7 +118,7 @@ class PagePriseRDV extends React.Component {
                                 Rendez-vous validé pour le {moment(this.state.date).format("DD/MM/YYYY")} de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")} !
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onClick={() => this.validerRDV()}>Retourner à l'écran principal</button>
+                                <button type="button" class="btn btn-primary" onClick={() => this.validerRDV()} data-bs-dismiss="modal" aria-label="Close">Retourner à l'écran principal</button>
                             </div>
                         </div>
                     </div>
