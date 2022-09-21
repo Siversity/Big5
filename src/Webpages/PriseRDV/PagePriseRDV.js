@@ -12,7 +12,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import {idPatient} from "../../API/Constantes";
 import {afficherPagePrincipale} from "../Main/Authentification";
 import { getListeRDV } from '../../API/getListeRDV';
-
+import { afficherListeRDV} from "../Main/PagePrincipale";
 
 moment.locale("fr");
 
@@ -105,7 +105,7 @@ class PagePriseRDV extends React.Component {
         return (
             <div className="container mt-4">
                 <div className="row justify-content-md-center">
-                    <h1>Prendre un rendez-vous</h1>
+                    <h1>Prendre un rendez-vous <button type="button" class="btn btn-primary" onClick={() => afficherListeRDV()}>Voir mes RDV</button> </h1>
                     {/* Calendrier */}
                     <div className="col border rounded p-4">
                         <FullCalendar

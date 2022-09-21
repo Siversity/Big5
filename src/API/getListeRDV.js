@@ -11,9 +11,7 @@ export function getListeRDV() {
         method: 'GET',
         url: url + "api/appointment?participant.actor.identifier.value=" + idPatient
     }).then(response => {
-        console.log(response.data)
         let liste = response.data.sort((a, b) => {
-            console.log(a.start)
             a = new Date(a.start);
             b = new Date(b.start);
             var results = a > b ? -1 : a < b ? 1 : 0;
