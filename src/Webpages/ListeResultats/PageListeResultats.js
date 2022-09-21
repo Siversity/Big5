@@ -3,6 +3,11 @@ import { startOfDay } from '@fullcalendar/react';
 import React from 'react';
 
 import { getListeRDV } from '../../API/getListeRDV';
+import moment from 'moment/moment';
+import 'moment/locale/fr';
+
+moment.locale("fr");
+
 
 class PageListeResultats extends React.Component {
 
@@ -27,8 +32,8 @@ class PageListeResultats extends React.Component {
 
         this.state.rdvs.forEach(rdv => {
             liste.push(
-                <li className="list-group-item">{rdv.start + "  "}
-                    <button type="button" class="btn btn-primary">Afficher >>></button>
+                <li className="list-group-item">{moment(rdv.start).format("DD/MM/YYYY") + "  "}
+                    <button type="button" class="btn btn-primary btn-sm">Afficher >>></button>
                 </li>
             )
         });
