@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
 import {getPatient} from "./../../API/getPatient";
+import { putPatient } from "../../API/putPatient";
 import Authentification from '../Main/Authentification';
+
 import moment from 'moment/moment';
 import 'moment/locale/fr';
-import { putPatient } from "../../API/putPatient";
+
 moment.locale("fr");
 
 class PageInfoPatient extends React.Component {
@@ -59,8 +61,12 @@ class PageInfoPatient extends React.Component {
                                 <td><input type="text" id="mail" class="form-control" placeholder={this.state.patient.telecom[1].value}/></td>
                             </tr>
                             <tr>
-                                <td><strong>Adresse :</strong></td>
-                                <td><input type="text" id="adr" class="form-control" placeholder={this.state.patient.address[0].line[1] + " " + this.state.patient.address[0].line[0] + ", " + this.state.patient.address[0].city}/></td>
+                                <td><strong>Voie :</strong></td>
+                                <td><input type="text" id="adr" class="form-control" placeholder={this.state.patient.address[0].line[0]}/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ville :</strong></td>
+                                <td><input type="text" id="adr" class="form-control" placeholder={this.state.patient.address[0].city}/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -90,8 +96,9 @@ class PageInfoPatient extends React.Component {
 
 export default PageInfoPatient;
 
+
 // Navigation functions
-function afficherPageConnexion() {
+function afficherPageConnexion(){
 
     // Balise d'affichage
     let content = null;
@@ -114,5 +121,39 @@ function afficherPageConnexion() {
     // Envoi d'un RDV
 function majPatient() {
         
+    let name = new Object();
+    name.use = "official";
+    name.family = this.state.patient.name[0].family; 
+    name.given = [this.state.patient.name[0].given[0]];
 
-    }
+    let phone = new Object();
+    phone.system = "phone";
+    phone.value = "";
+    phone.use = "mobile";
+
+    let email = new Object();
+    email.system = "email";
+    email.value = "";
+    email.use = "home";
+
+    let adresse = new Object();
+    adresse.use = "home"
+    adresse.line = [] ;
+    adresse.city = "";
+    adresse.country = "France";
+
+    // JSON
+    let patientJSON = new Object();
+    patientJSON.resourceType = "Patient";
+    patientJSON.id = this.state.patient.id;
+    patientJSON.active = "true";
+    patientJSON.name = name;
+    patientJSON.telecom = [phone, email]
+    patientJSON.gender = this.state.patient.gender;
+    patientJSON.birthDate = 
+    patientJSON.address = [adresse];
+
+    putPatient(JSON.stringify(patientJSON));
+
+}
+
