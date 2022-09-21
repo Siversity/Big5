@@ -31,7 +31,6 @@ class PageListeRDV extends React.Component {
             let current = new Date();
             let date = `${current.getFullYear()}-${(current.getMonth() + 1).toString().padStart(2, "0")}-${current.getDate()}T00:00:00Z`;
             let dates = [];
-            console.log("ok");
             this.state.rdvs.forEach(rdv => {
                 if (rdv.start >= date) {
                     let formatDate = moment(rdv.start).format("DD/MM/YYYY");

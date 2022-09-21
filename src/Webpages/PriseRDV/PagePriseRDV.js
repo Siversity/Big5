@@ -100,7 +100,6 @@ class PagePriseRDV extends React.Component {
     render() {
 
         let listeRDVs = this.afficherRDVs();
-        console.log(listeRDVs)
 
         return (
             <div className="container mt-4">
@@ -117,7 +116,7 @@ class PagePriseRDV extends React.Component {
                             }}
                             events={listeRDVs}
                             selectable={true}
-                            dateClick={(info) => (console.log(info.date), this.setState({ date: info.dateStr }))}
+                            dateClick={(info) => (this.setState({ date: info.dateStr }))}
                         />
                     </div>
 

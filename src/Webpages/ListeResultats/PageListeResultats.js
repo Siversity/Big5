@@ -41,7 +41,7 @@ class PageListeResultats extends React.Component {
         this.state.rdvs.forEach(rdv => {
             liste.push(
                 <li className="list-group-item">{moment(rdv.start).format("DD/MM/YYYY") + "  "}
-                    <button type="button" class="btn btn-primary btn-sm" onClick={() => this.afficherResultat(rdv.id)}>{rdv.id} >>></button>
+                    <button type="button" class="btn btn-primary btn-sm" onClick={() => this.afficherResultat(rdv.id)}>Résultats >>></button>
                 </li>
             )
         });
@@ -58,24 +58,27 @@ class PageListeResultats extends React.Component {
         }
 
         let results = "";
-        if (this.state.resultat !== null  && this.state.resultat !== undefined && this.state.resultat !== "") {
-            console.log(this.state.resultat)
+        if (this.state.resultat !== null && this.state.resultat !== undefined && this.state.resultat !== "") {
 
-            results = (
-                <>
-                <h6>RDV du {moment(this.state.resultat.effectiveDateTime).format("DD/MM/YYYY")} à {moment(this.state.resultat.effectiveDateTime).format("HH:MM")}</h6>
-                <p><strong>Médecin : </strong> {this.state.resultat.performer[0].display}</p>
-                <p><strong>Observations : </strong>{this.state.resultat.conclusion}</p>
-                </>);
+            if (this.state.resultat.performer[0].diplay !== null) {
+                results = (
+                    <>
+                        <h6>RDV du {moment(this.state.resultat.effectiveDateTime).format("DD/MM/YYYY")} à {moment(this.state.resultat.effectiveDateTime).format("HH:MM")}</h6>
+                        <p><strong>Médecin : </strong> {this.state.resultat.performer[0].display}</p>
+                        <p><strong>Observations : </strong>{this.state.resultat.conclusion}</p>
+                    </>);
+            }
+
 
         }
         if (this.state.resultat == "") {
             results = "Sélectionnez un RDV passé"
         }
         if (this.state.resultat == null || this.state.resultat == undefined) {
-            results = "Les résultats n'ont pas encore été publiés"
+            results = "Le RDV est à venir ou les résultats n'ont pas encore été publiés"
         }
-        
+
+
 
         return (
             <div class="container-fluid">
@@ -95,10 +98,10 @@ class PageListeResultats extends React.Component {
                     </div>
                     <div className='col'>
                         <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Résultats</h5>
-                                    {results}
-                                </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Résultats</h5>
+                                {results}
+                            </div>
                         </div>
                     </div>
                 </div>
