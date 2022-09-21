@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
-import {getListeRDV} from "./../../API/getListeRDV";
+import { getListeRDV } from "./../../API/getListeRDV";
 import moment from 'moment/moment';
 import 'moment/locale/fr';
 import PagePriseRDV from "../PriseRDV/PagePriseRDV";
@@ -38,16 +38,31 @@ class PageListeRDV extends React.Component {
                 }
             });
 
-            return(
-                <div class="container-fluid text-center">
-                    <h1>Mes rendez-vous à venir <div><br/></div></h1>
-                    <ul class="list-group" p-1>
-                        {dates}
-                    </ul>
-                    <br/>
+            return (
+                <div class="container-fluid text-center aligns-items-center d-flex">
+                    <div className="container-fluid m-4">
+                        <div className="row row-cols-1">
+                            <div className="col">
+                                <h1>Mes rendez-vous à venir</h1>
+                            </div>
+                            <div className="col aligns-items-center d-flex justify-content-center">
+                                <div class="card w-50">
+                                    <ul class="list-group list-group-flush">
+                                        {dates}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="col">
+                            <br />
                     <button type="button" class="btn btn-primary" onClick={() => afficherPriseRDV()}>Prendre un nouveau rendez-vous</button>
-                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     
+                </div>
+
             );
         }
         else {
@@ -67,13 +82,13 @@ function afficherPriseRDV() {
     content = ReactDOM.createRoot(
         document.getElementById('contenu')
     );
-  
+
     // Réactualisation de l'affichage
     content.render(
-      // Sélection du noeud
+        // Sélection du noeud
         <React.StrictMode>
             {/* Composant affichés */}
-            <PagePriseRDV/>
+            <PagePriseRDV />
         </React.StrictMode>
     );
-  }
+}
