@@ -7,13 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import Authentification from './Webpages/Main/Authentification';
 
 
-const navbar = ReactDOM.createRoot(document.getElementById('navigation'));
-navbar.render(
-  <React.StrictMode>
-    <BarreNavigation />
-  </React.StrictMode>
-);
-
 const content = ReactDOM.createRoot(document.getElementById('contenu'));
 content.render(
   <React.StrictMode>

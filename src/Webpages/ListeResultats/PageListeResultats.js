@@ -43,7 +43,7 @@ class PageListeResultats extends React.Component {
 
 
     render() {
-
+        
         let listeRDVs;
         if (this.state.rdvs !== null) {
             listeRDVs = this.displayRDVs();
