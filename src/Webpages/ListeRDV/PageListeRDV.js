@@ -21,11 +21,13 @@ class PageListeRDV extends React.Component {
         if(this.state.rdvs !== null){
             const current = new Date(); 
             const date = `${current.getFullYear()}-${(current.getMonth()+1).toString().padStart(2,"0")}-${current.getDate()}T00:00:00Z`;
+
+
             return(
                     <ul class="list-group">
                         {this.state.rdvs.forEach(rdv =>{
                             if(rdv.start >= date){
-                                console.log(rdv.start);
+                                console.log(rdv);
                                 <li class="list-group-item">{rdv.start}</li>
                             }
                         })}

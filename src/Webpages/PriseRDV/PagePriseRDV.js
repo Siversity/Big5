@@ -84,7 +84,7 @@ class PagePriseRDV extends React.Component {
                             plugins={[interactionPlugin, dayGridPlugin]}
                             initialView="dayGridMonth"
                             validRange={{
-                                start: '2022-09-15',
+                                start: moment(Date.now()).format("YYYY-MM-DD"),
                                 end: null,
                             }}
                             selectable={true}

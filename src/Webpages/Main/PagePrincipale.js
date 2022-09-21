@@ -17,7 +17,7 @@ function PagePrincipale() {
       <div class="row row-cols-1 row-cols-md-3 g-4 p-4 m-4">
         {/* Liste des résultats */}
         <div class="col">
-          <div class="card h-100 border-0">
+          <div class="card cardPP h-100 border-0">
               <div class="card-body">
                 <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeResutats()}>Consulter mes résultats d'analyse</button>
               </div>
@@ -26,7 +26,7 @@ function PagePrincipale() {
 
         {/* Prise de RDV */}
         <div class="col">
-        <div class="card h-100 border-0">
+        <div class="card cardPP h-100 border-0">
               <div class="card-body">
                 <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherPriseRDV()}>Prendre un rendez-vous</button>
               </div>
@@ -35,7 +35,7 @@ function PagePrincipale() {
 
         {/*!-- Liste des RDV */}
         <div class="col">
-        <div class="card h-100 border-0">
+        <div class="card cardPP h-100 border-0">
               <div class="card-body">
                 <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>Consulter mes prochains rendez-vous</button>
               </div>
