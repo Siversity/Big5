@@ -122,7 +122,21 @@ class PageInfoPatient extends React.Component {
                                 <button type="button" class="btn btn-danger" onClick={() => afficherPageConnexion()}>Déconnexion <i class="bi bi-box-arrow-right"></i></button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success" onClick={() => this.majPatient()}>Mettre à jour <i class="bi bi-arrow-counterclockwise"></i></button>
+                                <button type="button" class="btn btn-success" onClick={() => this.majPatient()} data-bs-toggle="modal" data-bs-target="#modification">Mettre à jour <i class="bi bi-arrow-counterclockwise"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Modal */}
+                    <div class="modal fade" id="modification" tabindex="-1" aria-labelledby="modificationModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modificationModal">Modification des infos</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Les modifications ont bien été prises en compte !
+                                </div>
                             </div>
                         </div>
                     </div>
