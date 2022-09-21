@@ -130,7 +130,7 @@ class PagePriseRDV extends React.Component {
                         <input type="time" name="time" min="08:00" max="17:30" required onInput={(e) => (this.setState({ time: moment(e.target.value, "hh:mm".valueOf()) }))}></input>
                         <p>Rendez-vous de {moment(this.state.time).format("LT")} à {moment(this.state.time).add(1800000).format("LT")}</p>
                         <hr />
-                        <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()} data-bs-toggle="modal" data-bs-target="#validation">Prendre RDV</button>
+                        <button type="button" class="btn btn-primary" onClick={() => this.prendreRDV()} data-bs-toggle="modal" data-bs-target="#validation">Confirmer ce rendez-vous</button>
                     </div>
                 </div>
 

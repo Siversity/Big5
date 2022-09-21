@@ -37,7 +37,7 @@ function PagePrincipale() {
         <div class="col">
         <div class="card cardPP h-100 border-0">
               <div class="card-body">
-                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>Consulter mes prochains rendez-vous</button>
+                <button class="btn btn-primary h-100 w-100 fs-3 fw-bold" type="submit" onClick={() => afficherListeRDV()}>Gérer mes prochains rendez-vous</button>
               </div>
           </div>
         </div>
