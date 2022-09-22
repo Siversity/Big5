@@ -37,7 +37,7 @@ class PageListeRDV extends React.Component {
                     let formatHeure = moment(rdv.start).format("HH:mm");
                     dates.push(
                         <li class="list-group-item">
-                            <strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique <button type="button" class="btn btn-danger btn-sm" id={rdv.id} onClick={() => supprimerRDV(rdv.id)} data-bs-toggle="modal" data-bs-target="#suppression">Supprimer</button>
+                            <strong>{formatDate} à {formatHeure} </strong> : Analyse hématologique <button type="button" class="btn btn-danger btn-sm" id={rdv.id} onClick={() => supprimerRDV(rdv.id)} data-bs-toggle="modal" data-bs-target="#suppression">Annuler</button>
 
                         </li >);
                 }
@@ -69,11 +69,11 @@ class PageListeRDV extends React.Component {
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="suppressionModal">Suppression du RDV</h5>
+                                    <h5 class="modal-title" id="suppressionModal">Annulation du RDV</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Le rendez-vous a bien été supprimé !
+                                    Le rendez-vous a bien été annulé !
                                 </div>
                             </div>
                         </div>
