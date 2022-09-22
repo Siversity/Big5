@@ -28,11 +28,15 @@ class PageListeResultats extends React.Component {
         })
     }
 
-    async afficherResultat(idRDV) {
-        let newResultat = await getResultat(idRDV);
+    async afficherResultat(start) {
+        let newResultat = await getResultat(start);
+
+        
         this.setState({
-            resultat: newResultat[0]
+            resultat: newResultat
         });
+
+        console.log(newResultat)
     }
 
     displayRDVs() {
@@ -41,7 +45,7 @@ class PageListeResultats extends React.Component {
         this.state.rdvs.forEach(rdv => {
             liste.push(
                 <li className="list-group-item">{moment(rdv.start).format("DD/MM/YYYY") + "  "}
-                    <button type="button" class="btn btn-primary btn-sm" onClick={() => this.afficherResultat(rdv.id)}>Résultats >>></button>
+                    <button type="button" class="btn btn-primary btn-sm" onClick={() => this.afficherResultat(rdv.start)}>Résultats >>></button>
                 </li>
             )
         });
